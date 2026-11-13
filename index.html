@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#05050f; --bg2:#0b0b1e; --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.09);
-  --text:#f2f2fa; --muted:#9a9ab5; --violet:#8b5cf6; --cyan:#22d3ee; --green:#10b981;
+  --bg:#071022; --bg2:#0a1730; --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.09);
+  --text:#f2f2fa; --muted:#9a9ab5; --violet:#3b82f6; --cyan:#22d3ee; --green:#10b981;
   --orange:#f97316; --gold:#f5c542; --radius:20px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -25,7 +25,7 @@ img{display:block;max-width:100%}
 /* 3D background */
 #bg3d{position:fixed;inset:0;z-index:0;pointer-events:none}
 .orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;pointer-events:none}
-.orb.a{width:520px;height:520px;background:radial-gradient(circle,#7c3aed,transparent 65%);top:-140px;left:-120px;animation:drift 16s ease-in-out infinite alternate}
+.orb.a{width:520px;height:520px;background:radial-gradient(circle,#1e40af,transparent 65%);top:-140px;left:-120px;animation:drift 16s ease-in-out infinite alternate}
 .orb.b{width:460px;height:460px;background:radial-gradient(circle,#0891b2,transparent 65%);top:32%;right:-160px;animation:drift 20s ease-in-out infinite alternate-reverse}
 .orb.c{width:420px;height:420px;background:radial-gradient(circle,#059669,transparent 65%);bottom:-160px;left:30%;animation:drift 18s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,36px) scale(1.12)}}
@@ -46,17 +46,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);ba
 .nav-links a:hover{color:#fff}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn-primary{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;box-shadow:0 8px 28px rgba(139,92,246,.45)}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;box-shadow:0 8px 28px rgba(37,99,235,.5)}
 .btn-ghost{background:rgba(255,255,255,.06);border-color:var(--line);color:var(--text)}
 .btn-ghost:hover{background:rgba(255,255,255,.12)}
 .btn-sm{padding:9px 18px;font-size:13.5px}
 /* hero */
 header{padding:168px 0 90px;text-align:center;position:relative}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.4);color:#c4b5fd;font-size:13.5px;font-weight:500}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.45);color:#bfdbfe;font-size:13.5px;font-weight:500}
 .badge i{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399;animation:pulse 1.8s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .hero-title{font-size:clamp(44px,8vw,88px);line-height:1.04;font-weight:700;letter-spacing:-2px;margin:26px 0 18px}
-.grad{background:linear-gradient(92deg,#a78bfa 0%,#22d3ee 45%,#34d399 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{background:linear-gradient(92deg,#60a5fa 0%,#38bdf8 45%,#34d399 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-sub{max-width:640px;margin:0 auto 34px;color:var(--muted);font-size:18px}
 .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .hero-stats{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:58px}
@@ -77,7 +77,7 @@ section{padding:84px 0}
 /* projects */
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 .project{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transform-style:preserve-3d;transition:border-color .25s,box-shadow .25s;will-change:transform}
-.project:hover{border-color:rgba(139,92,246,.55);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(139,92,246,.25),0 0 44px rgba(139,92,246,.18)}
+.project:hover{border-color:rgba(59,130,246,.55);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(59,130,246,.3),0 0 44px rgba(59,130,246,.2)}
 .project .thumb{aspect-ratio:16/10;overflow:hidden;position:relative}
 .project .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .project:hover .thumb img{transform:scale(1.06)}
@@ -88,7 +88,7 @@ section{padding:84px 0}
 .project p{color:var(--muted);font-size:15px;margin:10px 0 16px}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .tag{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#d6d6e8}
-.tag.v{color:#c4b5fd;border-color:rgba(139,92,246,.45);background:rgba(139,92,246,.12)}
+.tag.v{color:#bfdbfe;border-color:rgba(59,130,246,.45);background:rgba(59,130,246,.12)}
 .tag.c{color:#67e8f9;border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.1)}
 .tag.g{color:#6ee7b7;border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.1)}
 .tag.o{color:#fdba74;border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.1)}
@@ -117,7 +117,7 @@ section{padding:84px 0}
 .service h3{font-size:17px;margin-bottom:8px}
 .service p{color:var(--muted);font-size:14px}
 /* contact */
-.contact-box{background:linear-gradient(135deg,rgba(139,92,246,.22),rgba(34,211,238,.12));border:1px solid rgba(139,92,246,.4);border-radius:26px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.contact-box{background:linear-gradient(135deg,rgba(37,99,235,.25),rgba(34,211,238,.12));border:1px solid rgba(59,130,246,.45);border-radius:26px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
 .contact-box h2{font-size:clamp(28px,4vw,42px);letter-spacing:-1px}
 .contact-box p{color:var(--muted);max-width:520px;margin:14px auto 28px}
 footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);font-size:14px}
@@ -253,7 +253,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);f
       <article class="project reveal">
         <div class="thumb" style="display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,#1e1b4b,#05050f 70%);min-height:220px">
           <div style="text-align:center;padding:40px 20px">
-            <div style="font-family:'Space Grotesk';font-size:52px;font-weight:700;background:linear-gradient(92deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent">$VEIN</div>
+            <div style="font-family:'Space Grotesk';font-size:52px;font-weight:700;background:linear-gradient(92deg,#60a5fa,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent">$VEIN</div>
             <div style="color:var(--muted);font-size:14px;margin-top:6px">Agent Vein — deposit-mining dApp on BNB Chain</div>
           </div>
           <span class="price">Web3 dApp · Live</span>
@@ -305,7 +305,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);f
     </div>
     <div class="services reveal">
       <div class="service"><div class="ic" style="background:rgba(16,185,129,.15);color:#6ee7b7">◈</div><h3>Landing Pages</h3><p>High-converting pages for launches, presales and campaigns.</p></div>
-      <div class="service"><div class="ic" style="background:rgba(139,92,246,.15);color:#c4b5fd">▦</div><h3>Dashboards</h3><p>Admin panels and analytics views that are actually pleasant to use.</p></div>
+      <div class="service"><div class="ic" style="background:rgba(59,130,246,.15);color:#bfdbfe">▦</div><h3>Dashboards</h3><p>Admin panels and analytics views that are actually pleasant to use.</p></div>
       <div class="service"><div class="ic" style="background:rgba(249,115,22,.15);color:#fdba74">▣</div><h3>E-Commerce</h3><p>Storefronts with product grids, carts and checkout flows.</p></div>
       <div class="service"><div class="ic" style="background:rgba(34,211,238,.15);color:#67e8f9">⬡</div><h3>Web3 Front-Ends</h3><p>dApp interfaces, sale pages and wallet-connected experiences.</p></div>
     </div>
@@ -349,7 +349,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);f
     resize();window.addEventListener('resize',resize);
     // particles
     var N=700,pos=new Float32Array(N*3),col=new Float32Array(N*3);
-    var palette=[[0.55,0.36,0.96],[0.13,0.83,0.93],[0.2,0.73,0.51],[0.96,0.77,0.26]];
+    var palette=[[0.23,0.51,0.96],[0.13,0.83,0.93],[0.2,0.73,0.51],[0.96,0.77,0.26]];
     for(var i=0;i<N;i++){
       pos[i*3]=(Math.random()-.5)*46;pos[i*3+1]=(Math.random()-.5)*28;pos[i*3+2]=(Math.random()-.5)*22-4;
       var c=palette[i%palette.length];
@@ -363,7 +363,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);f
     // wireframe icosahedron + torus knot
     var ico=new THREE.Mesh(
       new THREE.IcosahedronGeometry(3.4,0),
-      new THREE.MeshBasicMaterial({color:0x8b5cf6,wireframe:true,transparent:true,opacity:.28}));
+      new THREE.MeshBasicMaterial({color:0x3b82f6,wireframe:true,transparent:true,opacity:.28}));
     ico.position.set(9.5,3.2,-4);scene.add(ico);
     var knot=new THREE.Mesh(
       new THREE.TorusKnotGeometry(2.1,.55,90,12),
