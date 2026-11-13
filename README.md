@@ -1,12 +1,37 @@
-# NdysFortune — Portfolio
+# NdysFortune — Portfolio (React + Vite)
 
-Personal portfolio of **Andy Eka Mulya** — front-end developer behind NdysFortune.
+Personal portfolio of **NdysFortune** — front-end development and digital templates by Andy Eka Mulya.
 
-## What's inside
+## Stack
 
-- Vanilla HTML, CSS and JavaScript — no frameworks, no build step
-- Three.js 3D background (particle field + wireframe shapes) with mouse parallax
-- 3D tilt project cards, scroll-reveal animations, responsive layout
+- React 19 + Vite
+- Three.js 3D background (particle field + wireframe shapes, mouse parallax)
+- Vanilla CSS design system (dark navy blue + gold)
+
+## Structure
+
+```
+src/
+  main.jsx            # entry
+  App.jsx             # layout composition
+  index.css           # design system (navy theme, responsive)
+  assets/
+    images.js         # screenshots + logo as data URIs (repo stays text-only)
+  data/
+    projects.js       # projects, skills, services
+  components/
+    Background3D.jsx  # Three.js canvas
+    Navbar.jsx        # floating glass pill nav + hamburger + active link
+    Hero.jsx
+    Marquee.jsx
+    Projects.jsx
+    ProjectCard.jsx   # 3D tilt on hover + scroll reveal
+    About.jsx         # about + skills
+    Services.jsx
+    Contact.jsx
+    Footer.jsx
+    Reveal.jsx        # scroll-reveal wrapper
+```
 
 ## Projects featured
 
@@ -21,10 +46,13 @@ Personal portfolio of **Andy Eka Mulya** — front-end developer behind NdysFort
 
 Template source lives in [andymulya/web-templates-vanilla](https://github.com/andymulya/web-templates-vanilla).
 
-## Deploy
+## Develop & deploy
 
 ```bash
-vercel --prod
+npm install
+npm run dev      # local dev
+npm run build    # production build -> dist/
+vercel --prod    # deploy (project "portfolio")
 ```
 
-Static site — `index.html` + `assets/`. No build step needed.
+Live: https://portfolio-eight-bay-nu9tld6aca.vercel.app
