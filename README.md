@@ -55,4 +55,4 @@ npm run build    # production build -> dist/
 vercel --prod    # deploy (project "portfolio")
 ```
 
-Live: https://portfolio-eight-bay-nu9tld6aca.vercel.app
+Live: https://ndysfortune-portfolio.vercel.app
