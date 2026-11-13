@@ -36,14 +36,24 @@ img{display:block;max-width:100%}
   mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%)}
 .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px}
 /* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,5,15,.65);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk';font-weight:700;font-size:19px;letter-spacing:.3px}
+/* nav — floating glass pill */
+nav{position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px;pointer-events:none}
+.nav-in{pointer-events:auto;position:relative;width:100%;max-width:1180px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 18px;border-radius:999px;background:rgba(10,20,44,.55);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 40px rgba(0,0,0,.45);transition:background .3s,border-color .3s,box-shadow .3s}
+nav.scrolled .nav-in{background:rgba(7,16,34,.88);border-color:rgba(96,165,250,.28);box-shadow:0 16px 48px rgba(0,0,0,.6)}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:19px;letter-spacing:.3px;background:linear-gradient(90deg,#f5c542,#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}
 .brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid rgba(245,197,66,.7);box-shadow:0 0 18px rgba(245,197,66,.35)}
-.brand span{color:var(--gold)}
 .nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--muted)}
-.nav-links a{transition:color .2s}
+.nav-links a{position:relative;padding:6px 2px;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;border-radius:2px;background:linear-gradient(90deg,#3b82f6,#22d3ee);transition:width .25s}
 .nav-links a:hover{color:#fff}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:#fff}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.hamburger{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.hamburger span{display:block;width:18px;height:2px;border-radius:2px;background:#fff;transition:transform .25s,opacity .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn-primary{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;box-shadow:0 8px 28px rgba(37,99,235,.5)}
@@ -130,6 +140,11 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);f
   .split{grid-template-columns:1fr}
   .services{grid-template-columns:repeat(2,1fr)}
   .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;gap:4px;padding:12px;border-radius:20px;background:rgba(7,16,34,.94);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px);box-shadow:0 16px 48px rgba(0,0,0,.55)}
+  .nav-links.open a{padding:10px 14px;border-radius:12px;font-size:15px}
+  .nav-links.open a:hover{background:rgba(255,255,255,.06)}
+  .nav-links.open a::after{display:none}
   .featured .thumb{aspect-ratio:16/10}
   .featured .body{flex-direction:column;gap:16px}
   .featured .body>div{min-width:0}
@@ -154,7 +169,10 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:var(--muted);f
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
-    <a class="btn btn-primary btn-sm" href="#contact">Hire Me</a>
+    <div class="nav-actions">
+      <a class="btn btn-primary btn-sm" href="#contact">Hire Me</a>
+      <button type="button" class="hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
@@ -411,6 +429,20 @@ var io=new IntersectionObserver(function(entries){
   entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');io.unobserve(en.target);}});
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+<script>
+// ---- modern navbar: scrolled state + active link + close menu on click ----
+(function(){
+  var nav=document.querySelector('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>24)},{passive:true});
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){
+      document.querySelector('.nav-links').classList.remove('open');
+      var b=document.querySelector('.hamburger');if(b)b.classList.remove('open');
+      document.querySelectorAll('.nav-links a').forEach(function(x){x.classList.remove('active')});
+      a.classList.add('active');
+    });
+  });
+})();
 </script>
 </body>
 </html>
